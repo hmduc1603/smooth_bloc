@@ -61,7 +61,7 @@ class AppLoadingHUD extends StatelessWidget {
             builder: (context, visible, child) {
               return Visibility(
                 visible: controller.params.value.visible,
-                child: StateManagement()
+                child: SmoothBloc()
                     .appLoadingBuilder(controller.params.value.message ?? ''),
               );
             })

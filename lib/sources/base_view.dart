@@ -117,7 +117,7 @@ abstract class BaseView<S extends BaseState, C extends BaseCubit<S>,
     return showDialog(
       context: context,
       builder: (context) {
-        return StateManagement().appDialogBuilder(message);
+        return SmoothBloc().appDialogBuilder(message);
       },
     );
   }
@@ -126,7 +126,7 @@ abstract class BaseView<S extends BaseState, C extends BaseCubit<S>,
     showDialog(
       context: context,
       builder: (context) {
-        return StateManagement().appDialogBuilder(message);
+        return SmoothBloc().appDialogBuilder(message);
       },
     );
   }
