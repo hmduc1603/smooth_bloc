@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:injectable/injectable.dart';
 import 'package:smooth_bloc/smooth_bloc.dart';
 
 import 'login_state.dart';
