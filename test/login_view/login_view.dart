@@ -19,6 +19,7 @@ class _LoginViewState extends BaseView<LoginState, LoginCubit, LoginView> {
   @override
   onNewEvent(BaseEvent event) {
     if (event is PushPageEvent) {
+      // ignore: unused_local_variable
       final routeName = event.routeName;
       // Push new view
     }

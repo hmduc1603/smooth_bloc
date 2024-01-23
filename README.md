@@ -1,6 +1,6 @@
 
 <div align="center">
-  <img src="assets/smooth_bloc_icon.png" width="400"/>
+  <img src="https://github.com/hmduc1603/smooth_bloc/blob/main/assets/smooth_bloc_icon.png" width="400"/>
 </div>
 
 ---
