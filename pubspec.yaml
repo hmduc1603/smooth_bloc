@@ -1,6 +1,6 @@
 name: smooth_bloc
 description: A easiest Bloc wrapper implementation for production level
-version: 0.0.6
+version: 0.0.8
 repository: https://github.com/hmduc1603/smooth_bloc
 platforms:
   android:

@@ -111,8 +111,10 @@ part 'login_state.g.dart';
 @CopyWith()
 class LoginState extends BaseState {
   final bool isLoggedIn;
+
+  // Constructor need to declare default const for all props
   LoginState({
-    required this.isLoggedIn,
+     this.isLoggedIn = false,
   });
 
   @override
