@@ -69,6 +69,31 @@ dev_dependencies:
 
 ## How To Use
 
+### First Setup
+
+[Smooth Bloc](https://pub.dev/packages/smooth_bloc) allows customize Dialog & Loading Screen if you want.
+
+```
+void main() {
+  // Setup SmoothBloc
+  SmoothBloc().setUp(
+    appLoadingBuilder: (message) {
+      // Return your customized Widget here
+    },
+    appDialogBuilder: (message) {
+      // Return your customized Widget here
+    },
+  );
+
+  // Configure getIt here (https://pub.dev/packages/injectable)
+  configureDependencies();
+
+  // Run App
+  runApp(const TestApp());
+}
+```
+
+
 ### Creating State Class
 
 <div align="center">
@@ -272,25 +297,3 @@ Remeber to run build_runner to generate essential components (@CopyWith, @inject
 flutter packages pub run build_runner build --delete-conflicting-outputs
 ```
 
-
-## Additional information
-
-[Smooth Bloc](https://pub.dev/packages/smooth_bloc) allows customize Dialog & Loading Screen
-
-```
-void main() {
-  // Setup SmoothBloc
-  SmoothBloc().setUp(
-    appLoadingBuilder: (message) {
-      // Return your customized Widget here
-    },
-    appDialogBuilder: (message) {
-      // Return your customized Widget here
-    },
-  );
-
-
-  // Run App
-  runApp(const TestApp());
-}
-```
