@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_bloc/smooth_bloc.dart';
 
+import 'login_view/login_view.dart';
+
 void main() {
   // Setup SmoothBloc
   SmoothBloc().setUp();
@@ -19,6 +21,6 @@ class TestApp extends StatefulWidget {
 class _TestAppState extends State<TestApp> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const LoginView();
   }
 }

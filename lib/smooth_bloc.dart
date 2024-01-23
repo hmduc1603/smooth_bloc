@@ -5,9 +5,6 @@ export 'sources/base_event.dart';
 export 'sources/base_cubit.dart';
 export 'sources/base_state.dart';
 export 'sources/base_view.dart';
-
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'package:injectable/injectable.dart';
+export 'package:equatable/equatable.dart';
+export 'package:copy_with_extension/copy_with_extension.dart';

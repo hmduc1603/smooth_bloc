@@ -5,12 +5,13 @@ import 'package:smooth_bloc/sources/base_state.dart';
 import 'base_event.dart';
 
 abstract class BaseCubit<S extends BaseState> extends Cubit<S> {
-  //Core
+  /// A public subject manages BaseEvent
   final eventSubject = PublishSubject<BaseEvent>();
   Stream<BaseEvent> get eventStream => eventSubject.stream;
 
   BaseCubit(S initialState) : super(initialState);
 
+  /// Fire LoadingEvent which BaseView will listen and show Loading Screen
   showLoading({bool hasBlurBackground = true, dynamic message}) {
     _addToEvent(LoadingEvent(
         isLoading: true,
@@ -18,15 +19,18 @@ abstract class BaseCubit<S extends BaseState> extends Cubit<S> {
         message: message));
   }
 
+  /// Fire LoadingEvent which BaseView will listen and hide Loading Screen
   hideLoading({bool hasBlurBackground = true}) {
     _addToEvent(
         LoadingEvent(isLoading: false, hasBlurBackground: hasBlurBackground));
   }
 
+  /// Fire MessageEvent which BaseView will listen and show Dialog
   showMessage(dynamic msg) {
     _addToEvent(MessageEvent(msg: msg));
   }
 
+  /// Fire MessageEvent which BaseView will listen and show an Error Dialog
   handleError(dynamic error) {
     _addToEvent(ErrorEvent(error: error));
   }
@@ -37,12 +41,14 @@ abstract class BaseCubit<S extends BaseState> extends Cubit<S> {
     }
   }
 
+  /// Close Cubit
   @override
   Future<void> close() {
     eventSubject.close();
     return super.close();
   }
 
+  /// Emit new state that should trigger screen rebuilding
   @override
   void emit(S state) {
     if (!isClosed) {
