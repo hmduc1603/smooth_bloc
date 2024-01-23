@@ -15,8 +15,8 @@ class SmoothBloc {
 
   /// It's compulsory to call this setUp function before run app
   void setUp({
-    required Widget Function(String message)? appDialogBuilder,
-    required Widget Function(String message)? appLoadingBuilder,
+    Widget Function(String message)? appDialogBuilder,
+    Widget Function(String message)? appLoadingBuilder,
   }) {
     _singleton.appDialogBuilder =
         appDialogBuilder ?? _getDefaultSmoothBlocDialogBuilder;

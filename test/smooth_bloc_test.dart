@@ -1,12 +1,24 @@
-import 'package:flutter_test/flutter_test.dart';
-
+import 'package:flutter/material.dart';
 import 'package:smooth_bloc/smooth_bloc.dart';
 
 void main() {
-  test('adds one to input values', () {
-    final calculator = Calculator();
-    expect(calculator.addOne(2), 3);
-    expect(calculator.addOne(-7), -6);
-    expect(calculator.addOne(0), 1);
-  });
+  // Setup SmoothBloc
+  SmoothBloc().setUp();
+
+  // Run App
+  runApp(const TestApp());
+}
+
+class TestApp extends StatefulWidget {
+  const TestApp({super.key});
+
+  @override
+  State<TestApp> createState() => _TestAppState();
+}
+
+class _TestAppState extends State<TestApp> {
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
 }
