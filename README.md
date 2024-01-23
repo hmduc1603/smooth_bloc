@@ -33,7 +33,7 @@ Here's some main features:
 ## Overview
 
 <div align="center">
-  <img src="assets/smooth_bloc_overview.png" width="300"/>
+  <img src="https://github.com/hmduc1603/smooth_bloc/blob/main/assets/smooth_bloc_overview.png" width="300"/>
 </div>
 
 
@@ -50,7 +50,7 @@ A screen/feature in [Smooth Bloc](https://pub.dev/packages/smooth_bloc) will con
 ### Creating State Class
 
 <div align="center">
-  <img src="assets/smooth_bloc_state.png" width="150"/>
+  <img src="https://github.com/hmduc1603/smooth_bloc/blob/main/assets/smooth_bloc_state.png" width="150"/>
 </div>
 
 Classes that extends `BaseState` need to implement getter value of `stateComparisonProps` which declares props used to compare & identify when should the view need rebuild (when state are changed!)
@@ -78,7 +78,7 @@ class LoginState extends BaseState {
 ### Creating Cubit Class
 
 <div align="center">
-  <img src="assets/smooth_bloc_cubit.png" width="280"/>
+  <img src="https://github.com/hmduc1603/smooth_bloc/blob/main/assets/smooth_bloc_cubit.png" width="280"/>
 </div>
 
 Classes that extends from `BaseCubit` will inherit above functions and props.
@@ -159,7 +159,7 @@ void signOut() {
 ### Creating View Class
 
 <div align="center">
-  <img src="assets/smooth_bloc_view.png" width="140"/>
+  <img src="https://github.com/hmduc1603/smooth_bloc/blob/main/assets/smooth_bloc_view.png" width="140"/>
 </div>
 
 Classes that extends from `BaseView` will inherit above functions.
