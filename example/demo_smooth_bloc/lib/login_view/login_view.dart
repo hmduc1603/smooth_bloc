@@ -56,9 +56,11 @@ class _LoginViewState extends BaseView<LoginState, LoginCubit, LoginView> {
 
   @override
   Widget buildByState(BuildContext context, LoginState state) {
-    return Scaffold(
-      body: Center(
-        child: Column(
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               state.isLoggedIn ? "You're logged in" : "Please sign in!",

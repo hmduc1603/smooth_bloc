@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore: unnecessary_import
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:smooth_bloc/sources/base_state.dart';
 

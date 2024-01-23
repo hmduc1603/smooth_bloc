@@ -56,7 +56,7 @@ dependencies:
   # add copy_with_extension  
   copy_with_extension:  
   # add smooth_bloc
-  smooth_bloc
+  smooth_bloc:
   
 dev_dependencies:  
   # add the generator to your dev_dependencies  
