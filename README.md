@@ -76,9 +76,6 @@ void main() {
     },
   );
 
-  // Configure getIt here (https://pub.dev/packages/injectable)
-  configureDependencies();
-
   // Run App
   runApp(const TestApp());
 }
