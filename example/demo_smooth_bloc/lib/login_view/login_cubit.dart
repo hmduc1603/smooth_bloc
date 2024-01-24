@@ -33,7 +33,7 @@ class LoginCubit extends BaseCubit<LoginState> {
   void signOut() {
     // Signing user out
     // Return to some screen
-    eventSubject.add(PushPageEvent(routeName: "main"));
+    eventStreamController.add(PushPageEvent(routeName: "main"));
   }
 
   @override

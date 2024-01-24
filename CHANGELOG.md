@@ -1,2 +1,2 @@
-## 0.0.8
-Update ReadMe
+## 0.0.9
+Remove dependent packages (RxDart, GetIt).

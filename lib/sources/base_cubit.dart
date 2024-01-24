@@ -1,13 +1,15 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rxdart/rxdart.dart';
 import 'package:smooth_bloc/sources/base_state.dart';
 import 'base_event.dart';
 
 abstract class BaseCubit<S extends BaseState> extends Cubit<S> {
-  /// A public subject manages BaseEvent
-  final eventSubject = PublishSubject<BaseEvent>();
-  Stream<BaseEvent> get eventStream => eventSubject.stream;
+  /// A stream subject manages BaseEvent
+
+  final eventStreamController = StreamController<BaseEvent>.broadcast();
+  Stream<BaseEvent> get eventStream => eventStreamController.stream;
 
   BaseCubit(S initialState) : super(initialState);
 
@@ -36,15 +38,15 @@ abstract class BaseCubit<S extends BaseState> extends Cubit<S> {
   }
 
   _addToEvent(BaseEvent event) {
-    if (!eventSubject.isClosed) {
-      eventSubject.add(event);
+    if (!eventStreamController.isClosed) {
+      eventStreamController.add(event);
     }
   }
 
   /// Close Cubit
   @override
   Future<void> close() {
-    eventSubject.close();
+    eventStreamController.close();
     return super.close();
   }
 

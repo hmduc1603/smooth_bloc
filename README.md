@@ -14,8 +14,7 @@ This package is stably used in more than 20 author's enterprise applications and
 This package is built to work with:
 
 - [flutter_bloc](https://pub.dev/packages/flutter_bloc)
-- [rxdart](https://pub.dev/packages/rxdart)
-- [get_it](https://pub.dev/packages/get_it)
+- [equatable](https://pub.dev/packages/equatable)
 
 ## Main Features
 
@@ -49,21 +48,13 @@ A screen/feature in [Smooth Bloc](https://pub.dev/packages/smooth_bloc) will con
 
 ```
 dependencies:  
-  # add injectable to your dependencies  
-  injectable:  
-  # add get_it  
-  get_it:  
-  # add copy_with_extension  
+  # add copy_with_extension (Optional)
   copy_with_extension:  
   # add smooth_bloc
   smooth_bloc:
   
 dev_dependencies:  
-  # add the generator to your dev_dependencies  
-  injectable_generator:  
-  # add build runner if not already added  
-  build_runner:  
-  # add build runner if not already added  
+  # add copy_with_extension_gen (Optional)
   copy_with_extension_gen:
 ```
 
@@ -107,7 +98,7 @@ You can use [copy_with_extension](https://pub.dev/packages/copy_with_extension) 
 ```dart
 part 'login_state.g.dart';
 
-
+//@CopyWith() is an optional annotation
 @CopyWith()
 class LoginState extends BaseState {
   final bool isLoggedIn;
@@ -169,7 +160,7 @@ class LoginCubit extends BaseCubit<LoginState> {
   }
 ```
 
-Additionally, you can make use of `eventSubject` to fire any customized event class (extended from `BaseEvent`), and the View can listen to it!.
+Additionally, you can make use of `eventStreamController` to fire any customized event class (extended from `BaseEvent`), and the View can listen to it!.
 
 For example, if you want to create an event that trigger view to navigate to another view.
 
@@ -188,7 +179,7 @@ class PushPageEvent extends BaseEvent {
 void signOut() {
     // Signing user out
     // Return to some screen
-    eventSubject.add(PushPageEvent(routeName: "main"));
+    eventStreamController.add(PushPageEvent(routeName: "main"));
   }
 ```
 
@@ -225,6 +216,18 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends BaseView<LoginState, LoginCubit, LoginView> {
+  @override
+  LoginCubit assignCubit() {
+    // Example return using dependency injection
+    return GetIt.instance<LoginCubit>();
+    // Or return as a constant value
+    return LoginCubit();
+  }
+
+  // If TRUE, the Cubit close() function will not be called when View is disposed
+  // Default is FALSE
+  @override
+  bool get shouldNotDisposeCubitAndState => false;
   
   // This is from AutomaticKeepAliveClientMixin
   @override

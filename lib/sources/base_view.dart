@@ -4,7 +4,6 @@ import 'package:smooth_bloc/sources/base_event.dart';
 import 'package:smooth_bloc/sources/base_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 import 'package:smooth_bloc/sources/base_state.dart';
 import 'package:smooth_bloc/sources/statemanagement.dart';
 import 'base_app_loading.dart';
@@ -12,28 +11,34 @@ import 'base_app_loading.dart';
 abstract class BaseView<S extends BaseState, C extends BaseCubit<S>,
         W extends StatefulWidget> extends State<W>
     with AutomaticKeepAliveClientMixin {
-  final C cubit = GetIt.instance<C>();
+  late final C cubit;
   final loadingController = AppLoadingController();
   late S _state;
   StreamSubscription? _eventStreamSub;
 
   S get state => _state;
 
-  // Use when you want to maintain Cubit & State
-  bool get shouldMaintainState => false;
+  /// Assign your BaseCubit class here as constant value or singleton value if you want
+  /// Example use of dependency injection: GetIt.instance<C>()
+  C assignCubit();
+
+  /// If TRUE, the Cubit close() function will not be called when View is disposed
+  /// Default is FALSE
+  bool get shouldNotDisposeCubitAndState => false;
 
   @override
   void initState() {
-    super.initState();
+    cubit = assignCubit();
     _state = cubit.state;
     _eventStreamSub = cubit.eventStream.listen(
       (value) => onNewEvent(value),
     );
+    super.initState();
   }
 
   @override
   void dispose() {
-    if (!shouldMaintainState) {
+    if (!shouldNotDisposeCubitAndState) {
       _eventStreamSub?.cancel();
       cubit.close();
     }

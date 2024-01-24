@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:smooth_bloc/smooth_bloc.dart';
 
 import 'login_cubit.dart';
@@ -12,6 +13,19 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends BaseView<LoginState, LoginCubit, LoginView> {
+  @override
+  LoginCubit assignCubit() {
+    // Return using dependency injection
+    return GetIt.instance<LoginCubit>();
+    // Or return as a constant value (Note that if the view is disposed, Cubit class is also disposed)
+    return LoginCubit();
+  }
+
+  // If TRUE, the Cubit close() function will not be called when View is disposed
+  // Default is FALSE
+  @override
+  bool get shouldNotDisposeCubitAndState => false;
+
   // This is from AutomaticKeepAliveClientMixin
   @override
   bool get wantKeepAlive => true;
@@ -70,6 +84,12 @@ class _LoginViewState extends BaseView<LoginState, LoginCubit, LoginView> {
                 cubit.login("email", "password");
               },
               child: const Text("Login"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                cubit.signOut();
+              },
+              child: const Text("Sign Out"),
             ),
           ],
         ),

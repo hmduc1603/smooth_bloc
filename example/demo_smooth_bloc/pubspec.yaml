@@ -30,7 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  smooth_bloc: ^0.0.4
+  smooth_bloc: 
+    path: /Users/dennish/Desktop/Flutter/pub.dev/smooth_bloc
   injectable: ^2.3.0
   get_it: ^7.2.0
   copy_with_extension: ^5.0.4
