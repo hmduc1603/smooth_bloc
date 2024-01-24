@@ -64,7 +64,7 @@ dev_dependencies:
 
 [Smooth Bloc](https://pub.dev/packages/smooth_bloc) allows customize Dialog & Loading Screen if you want.
 
-```
+```dart
 void main() {
   // Setup SmoothBloc
   SmoothBloc().setUp(
@@ -96,8 +96,6 @@ Classes that extends `BaseState` need to implement getter value of `stateCompari
 You can use [copy_with_extension](https://pub.dev/packages/copy_with_extension) to help generate copyWith() function. It's very useful in Cubit's logical functions.
 
 ```dart
-part 'login_state.g.dart';
-
 //@CopyWith() is an optional annotation
 @CopyWith()
 class LoginState extends BaseState {
@@ -123,10 +121,9 @@ class LoginState extends BaseState {
 
 Classes that extends from `BaseCubit` will inherit above functions and props.
 
-```
+```dart
 import 'login_state.dart';
 
-@injectable
 class LoginCubit extends BaseCubit<LoginState> {
   LoginCubit() : super(LoginState());
 
@@ -164,7 +161,7 @@ Additionally, you can make use of `eventStreamController` to fire any customized
 
 For example, if you want to create an event that trigger view to navigate to another view.
 
-```
+```dart
 /// Create an event class
 class PushPageEvent extends BaseEvent {
   final String routeName;
@@ -174,7 +171,7 @@ class PushPageEvent extends BaseEvent {
 }
 ```
 
-```
+```dart
 /// Then use in Cubit
 void signOut() {
     // Signing user out
@@ -183,7 +180,7 @@ void signOut() {
   }
 ```
 
-```
+```dart
 /// In View, hanlde like this
 @override
   onNewEvent(BaseEvent event) {
@@ -204,7 +201,7 @@ void signOut() {
 
 Classes that extends from `BaseView` will inherit above functions.
 
-```
+```dart
 import 'login_cubit.dart';
 import 'login_state.dart';
 
@@ -293,12 +290,4 @@ class _LoginViewState extends BaseView<LoginState, LoginCubit, LoginView> {
     );
   }
 }
-```
-
-### Some Notes
-
-Remeber to run build_runner to generate essential components (@CopyWith, @injectable) before run the app.
-```
-flutter packages pub run build_runner build --delete-conflicting-outputs
-```
 
